@@ -13,6 +13,7 @@ let features = ['Jet', 6, false];
 cars.push('Mercedes Benz');
 let primeNumbers = [2, 3, 5, 7];
 // tuple 
+let animal = ['Mammal', 'Omnivorous'];
 let person = [1, 'Jacob', true];
 // tuple array 
 let players;
@@ -23,6 +24,10 @@ players = [
     [10, 'Maddison']
 ];
 console.log(players);
+let participants;
+participants = [
+    [1, 'Jacob', 'Singer']
+];
 // Union 
 let pid;
 pid = 8;
@@ -30,6 +35,7 @@ pid = 7;
 pid = 'My product';
 console.log(pid); // the last assigned value holds the memory position 
 // Enum - enumerated types 
+// ? enums use cases in typescript  
 var Direction1;
 (function (Direction1) {
     Direction1[Direction1["Up"] = 0] = "Up";
@@ -52,6 +58,11 @@ const team = {
     founder: 'John Apella',
     wonLeague: true
 };
+const favoriteTeam = {
+    name: 'Real Madrid',
+    year: 2013,
+    founder: 'John Wick'
+};
 console.log(team);
 // type assertion - explicitly telling the compiler that we want to treat a different entity as a certain type 
 let cid = 1;
@@ -60,7 +71,8 @@ let pname = 'Cube';
 let productName = pname;
 console.log(productName);
 // functions
-// ? how to declare the type of return value for arrow functions 
+// ? how to declare the type of return value for arrow functions - the return value type is declared after the parameters 
+// when using arrow function with a single argument, now curly brackets are necessary however one is necessary when having a return statement 
 const addNumbers = (x, y) => {
     return x + y;
 };
@@ -82,7 +94,8 @@ console.log('Today is a great day.');
 const user = {
     id: 1,
     name: 'Kyle',
-    isPro: false
+    isPro: false,
+    age: 30
 };
 const user2 = {
     id: 2,
@@ -102,7 +115,8 @@ const numMultiplication = (h, t) => {
 console.log(numMultiplication(5, 4));
 const sub = (h, t) => h - t; // curly braces are needed for a return statement 
 console.log(sub(4, 3));
-// protected, private cannot exist in type member. When a class is implementing an interface, the properties of the interface must match the properties of the class
+// protected, private cannot exist in type member. 
+// When a class is implementing an interface, the properties of the interface must match the properties of the class
 class Car {
     constructor(id, brand) {
         this.id = id;
@@ -128,5 +142,20 @@ class Person {
 }
 class Employee extends Person {
     constructor(id, name, age, position) {
+        super(id, name, age);
+        this.position = position;
     }
 }
+const employee = new Employee(1, 'Peter Griffin', 56, 'Tech lead');
+console.log(employee.position);
+console.log(employee.summary());
+// ? classes and subclasses 
+// * Generics - used to build reusable components
+function getArray(items) {
+    return new Array().concat(items);
+}
+let numArray = getArray([1, 2, 3, 4]);
+let strArray = getArray(['Cat', 'Level', 'Negative Capability']);
+numArray.push(30);
+console.log(numArray);
+console.log(strArray);

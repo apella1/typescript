@@ -26,6 +26,8 @@ let primeNumbers: number[] = [2, 3, 5, 7]
 
 // tuple 
 
+let animal: [string, string] = ['Mammal', 'Omnivorous']
+
 let person: [number, string, boolean] = [1, 'Jacob', true]
 
 // tuple array 
@@ -41,6 +43,12 @@ players = [
 
 console.log(players);
 
+let participants: [number, string, string][]
+
+participants = [
+    [1, 'Jacob', 'Singer']
+]
+
 // Union 
 
 let pid: string | number
@@ -52,6 +60,7 @@ pid = 'My product'
 console.log(pid); // the last assigned value holds the memory position 
 
 // Enum - enumerated types 
+// ? enums use cases in typescript  
 
 enum Direction1 {
     Up, 
@@ -76,7 +85,7 @@ type Team =  {
     name: string,
     year: number,
     founder: string,
-    wonLeague: boolean
+    wonLeague?: boolean // the ? makes the element optional while defining a new object with the type Team 
 }
 
 const team: Team = {
@@ -84,6 +93,12 @@ const team: Team = {
     year: 1927, 
     founder: 'John Apella',
     wonLeague: true
+}
+
+const favoriteTeam: Team = {
+    name: 'Real Madrid',
+    year: 2013,
+    founder: 'John Wick'
 }
 
 console.log(team);
@@ -101,9 +116,10 @@ console.log(productName);
 
 
 // functions
-// ? how to declare the type of return value for arrow functions 
+// ? how to declare the type of return value for arrow functions - the return value type is declared after the parameters 
+// when using arrow function with a single argument, now curly brackets are necessary however one is necessary when having a return statement 
 
-const addNumbers = (x: number, y: number) => {
+const addNumbers = (x: number, y: number) :number => {
     return x + y
 }
 
@@ -145,7 +161,8 @@ interface User {
 const user: User = {
     id: 1,
     name: 'Kyle',
-    isPro: false
+    isPro: false,
+    age: 30
 }
 
 const user2: User = {
@@ -181,7 +198,7 @@ interface MathFunc {
     (h: number, t: number) : number
 }
 
-const numMultiplication: MathFunc = (h: number, t: number) => {
+const numMultiplication: MathFunc = (h: number, t: number) :number => {
     return t * h
 }
 
@@ -205,7 +222,8 @@ interface CarInterface {
     bought(): string 
 }
 
-// protected, private cannot exist in type member. When a class is implementing an interface, the properties of the interface must match the properties of the class
+// protected, private cannot exist in type member. 
+// When a class is implementing an interface, the properties of the interface must match the properties of the class
 
 class Car implements CarInterface {
     readonly id: number
@@ -271,7 +289,15 @@ console.log(employee.summary());
 
 // * Generics - used to build reusable components
 
-function getArray(items: any[]) :any[] {
+function getArray<T>(items: T[]) :T[] {
     return new Array().concat(items)
 }
 
+
+let numArray = getArray<number>([1, 2, 3, 4])
+let strArray = getArray<string>(['Cat', 'Level', 'Negative Capability'])
+
+numArray.push(30)
+
+console.log(numArray);
+console.log(strArray);
