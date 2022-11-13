@@ -301,3 +301,4 @@ numArray.push(30)
 
 console.log(numArray);
 console.log(strArray);
+console.log(numArray[0].toFixed(2));
