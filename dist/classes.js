@@ -11,6 +11,7 @@ class Book {
 const master = new Book('The Mastery of Love', 'Don Miguel Ruiz');
 console.log(master.summary());
 const grit = new Book('Grit', 'Angela Duckworth');
+const habits = new Book("Atomic Habits", "James Clear");
 console.log(grit.summary());
 // derived classes must contain a super call if they contain a constructor
 // inheritance - extends 
@@ -21,6 +22,7 @@ class Paper extends Book {
 }
 const paper = new Paper('Awaken The Giant Within', 'Tony Robbins');
 console.log(paper.intro());
+// protected and readonly keywords 
 class Rectangle {
     constructor(width, height) {
         this.width = width;

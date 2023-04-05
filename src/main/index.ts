@@ -1,6 +1,6 @@
 let id: number = 5
 
-let partyLeader: String = 'Peter Griffin'
+let partyLeader: string = 'Peter Griffin'
 
 let hasOccurred: boolean = false
 
@@ -14,21 +14,40 @@ age = 7
 
 console.log('ID:', id);
 
+
 // type inference in typescript - this is when ts takes the value to be expected as the initially assigned value 
 
+
+// Arrays - arrays can be of various data types including string, number, boolean or union
+
+// string arrays
+
 let cars: String[] = ['Audi', 'Rolls Royce']
+cars.push('Mercedes Benz')
+
+
+// any arrays
 
 let features: any[] = ['Jet', 6, false]
 
-cars.push('Mercedes Benz')
+
+// number arrays
 
 let primeNumbers: number[] = [2, 3, 5, 7]
 
-// tuple 
 
-let animal: [string, string] = ['Mammal', 'Omnivorous']
+// union arrays
+
+let books: (string | number)[] = ['Deep Work', 1964, 'Narrations of Naval']
+
+
+// Tuples- locking types to a fixed element position
+// the number of items in the source must match those at the target and they must be of the same data type
+
+let animal: [string, string, string] = ['Mammal', 'Omnivorous', 'Carnivorous']
 
 let person: [number, string, boolean] = [1, 'Jacob', true]
+
 
 // tuple array 
 
@@ -38,7 +57,8 @@ players = [
     [7, 'Ronaldo'],
     [1, 'Curtois'],
     [30, 'Messi'],
-    [10, 'Maddison']
+    [10, 'Maddison'],
+    [10, 'Rashford']
 ]
 
 console.log(players);
@@ -46,10 +66,13 @@ console.log(players);
 let participants: [number, string, string][]
 
 participants = [
-    [1, 'Jacob', 'Singer']
+    [1, 'Jacob', 'Singer'],
+    [2, 'Martha', 'Athlete']
 ]
 
+
 // Union 
+// A union type is not limited to two data types
 
 let pid: string | number
 
@@ -58,6 +81,11 @@ pid = 7
 pid = 'My product'
 
 console.log(pid); // the last assigned value holds the memory position 
+
+let isActive: boolean | number | string
+isActive = "Yellow"
+isActive = 78
+isActive = false
 
 // Enum - enumerated types 
 // ? enums use cases in typescript  
@@ -79,12 +107,14 @@ enum Direction2 {
 console.log(Direction1.Down);
 console.log(Direction2.Down);
 
+
 // Objects
 
 type Team =  {
     name: string,
     year: number,
     founder: string,
+	players: (string | number)[],
     wonLeague?: boolean // the ? makes the element optional while defining a new object with the type Team 
 }
 
@@ -92,13 +122,24 @@ const team: Team = {
     name: 'Manchester United',
     year: 1927, 
     founder: 'John Apella',
+	players: ['Rashford', "Tony", "Fred", 1],
     wonLeague: true
 }
 
 const favoriteTeam: Team = {
     name: 'Real Madrid',
     year: 2013,
-    founder: 'John Wick'
+    founder: 'John Wick',
+	players: ['Manson', "Mark", 77],
+}
+
+
+let otherTeam: Team = {
+	name: "Gor Mahia",
+	year: 1883,
+	founder: "Mike Holbert",
+	players: ['Charles', "Isbell", 22],
+	wonLeague: true
 }
 
 console.log(team);
@@ -116,8 +157,8 @@ console.log(productName);
 
 
 // functions
-// ? how to declare the type of return value for arrow functions - the return value type is declared after the parameters 
-// when using arrow function with a single argument, now curly brackets are necessary however one is necessary when having a return statement 
+// the return value type is declared after the parameters 
+// when using arrow function with a single argument, no curly brackets are necessary however one is necessary when having a return statement 
 
 const addNumbers = (x: number, y: number) :number => {
     return x + y
@@ -135,6 +176,7 @@ function numDifference (a: number, b: number) :number {
 }
 
 console.log(numDifference(5, 6));
+console.log(numDifference(-2, -3))
 
 function log(message: string | number) :void {
     console.log(message);
@@ -147,9 +189,8 @@ console.log('Today is a great day.');
 
 
 // Interfaces
-// interfaces can't be used with primitives or with unions 
+// interfaces can't be used with primitives or with unions - types can
 // all the fields defined within an interface have to be included when assigning values using the interface type declaration
-// however a question mark is used to indicate that the field could be optional e.g age is optional within the User interface 
 
 interface User {
     readonly id: number, 
@@ -198,19 +239,19 @@ interface MathFunc {
     (h: number, t: number) : number
 }
 
-const numMultiplication: MathFunc = (h: number, t: number) :number => {
+const numMultiplication: MathFunc = (h, t) => {
     return t * h
 }
 
 console.log(numMultiplication(5, 4));
 
-const sub: MathFunc = (h: number, t: number) => h - t // curly braces are needed for a return statement 
+const sub: MathFunc = (h, t) => h - t // curly braces are needed for a return statement 
 
 console.log(sub(4, 3))
 
 
 // Classes - available in js from es6 
-// this keyword - used to denote the current instance that we're currently at 
+// this keyword - used to denote the current instance that we're at 
 // public, private and protected properties for classes 
 // by default, the properties of a class are public 
 // ! private must always precede readonly
@@ -250,6 +291,7 @@ interface PersonInterface {
     id: number, 
     name: string, 
     age: number,
+	// hobbies: string[],
     summary(): string
 }
 
@@ -257,11 +299,13 @@ class Person implements PersonInterface {
     id: number
     name: string
     age: number
+	// hobbies: string[]
 
     constructor(id: number, name: string, age: number) {
         this.id = id;
         this.name = name;
         this.age = age;
+		// this.hobbies = hobbies;
     }
 
     summary() {

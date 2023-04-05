@@ -16,6 +16,7 @@ const master = new Book('The Mastery of Love', 'Don Miguel Ruiz');
 console.log(master.summary());
 
 const grit = new Book('Grit', 'Angela Duckworth');
+const habits = new Book("Atomic Habits", "James Clear")
 console.log(grit.summary());
 
 
@@ -38,6 +39,8 @@ interface Shape {
     getArea: () => number | string;
 }
 
+
+// protected and readonly keywords 
 class Rectangle implements Shape {
     constructor(protected readonly width: number, protected readonly height: number) {
         this.width = width;

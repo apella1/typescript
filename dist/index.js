@@ -8,12 +8,19 @@ let age; // initializing the variable
 age = 7;
 console.log('ID:', id);
 // type inference in typescript - this is when ts takes the value to be expected as the initially assigned value 
+// Arrays - arrays can be of various data types including string, number, boolean or union
+// string arrays
 let cars = ['Audi', 'Rolls Royce'];
-let features = ['Jet', 6, false];
 cars.push('Mercedes Benz');
+// any arrays
+let features = ['Jet', 6, false];
+// number arrays
 let primeNumbers = [2, 3, 5, 7];
-// tuple 
-let animal = ['Mammal', 'Omnivorous'];
+// union arrays
+let books = ['Deep Work', 1964, 'Narrations of Naval'];
+// Tuples- locking types to a fixed element position
+// the number of items in the source must match those at the target and they must be of the same data type
+let animal = ['Mammal', 'Omnivorous', 'Carnivorous'];
 let person = [1, 'Jacob', true];
 // tuple array 
 let players;
@@ -21,19 +28,26 @@ players = [
     [7, 'Ronaldo'],
     [1, 'Curtois'],
     [30, 'Messi'],
-    [10, 'Maddison']
+    [10, 'Maddison'],
+    [10, 'Rashford']
 ];
 console.log(players);
 let participants;
 participants = [
-    [1, 'Jacob', 'Singer']
+    [1, 'Jacob', 'Singer'],
+    [2, 'Martha', 'Athlete']
 ];
 // Union 
+// A union type is not limited to two data types
 let pid;
 pid = 8;
 pid = 7;
 pid = 'My product';
 console.log(pid); // the last assigned value holds the memory position 
+let isActive;
+isActive = "Yellow";
+isActive = 78;
+isActive = false;
 // Enum - enumerated types 
 // ? enums use cases in typescript  
 var Direction1;
@@ -56,12 +70,21 @@ const team = {
     name: 'Manchester United',
     year: 1927,
     founder: 'John Apella',
+    players: ['Rashford', "Tony", "Fred", 1],
     wonLeague: true
 };
 const favoriteTeam = {
     name: 'Real Madrid',
     year: 2013,
-    founder: 'John Wick'
+    founder: 'John Wick',
+    players: ['Manson', "Mark", 77],
+};
+let otherTeam = {
+    name: "Gor Mahia",
+    year: 1883,
+    founder: "Mike Holbert",
+    players: ['Charles', "Isbell", 22],
+    wonLeague: true
 };
 console.log(team);
 // type assertion - explicitly telling the compiler that we want to treat a different entity as a certain type 
@@ -71,8 +94,8 @@ let pname = 'Cube';
 let productName = pname;
 console.log(productName);
 // functions
-// ? how to declare the type of return value for arrow functions - the return value type is declared after the parameters 
-// when using arrow function with a single argument, now curly brackets are necessary however one is necessary when having a return statement 
+// the return value type is declared after the parameters 
+// when using arrow function with a single argument, no curly brackets are necessary however one is necessary when having a return statement 
 const addNumbers = (x, y) => {
     return x + y;
 };
@@ -86,6 +109,7 @@ function numDifference(a, b) {
     }
 }
 console.log(numDifference(5, 6));
+console.log(numDifference(-2, -3));
 function log(message) {
     console.log(message);
 }
@@ -131,10 +155,12 @@ const car2 = new Car(2, 'Toyota');
 console.log(car, car2);
 console.log(car.bought());
 class Person {
+    // hobbies: string[]
     constructor(id, name, age) {
         this.id = id;
         this.name = name;
         this.age = age;
+        // this.hobbies = hobbies;
     }
     summary() {
         return `${name} is ${age} years old.`;
@@ -159,3 +185,4 @@ let strArray = getArray(['Cat', 'Level', 'Negative Capability']);
 numArray.push(30);
 console.log(numArray);
 console.log(strArray);
+console.log(numArray[0].toFixed(2));
