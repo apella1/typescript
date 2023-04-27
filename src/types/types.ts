@@ -9,4 +9,3 @@ console.log(three)
 
 const twelve = add("1","2")
 console.log(twelve)
-
