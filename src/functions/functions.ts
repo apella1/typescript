@@ -16,6 +16,7 @@
  * Anonymous functions
  * Protected namespace
  * Callbacks
+ * Higher order functions
  * Mapping functions
  * Return keyword - popping out of the local context
  */
