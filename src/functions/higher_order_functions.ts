@@ -9,7 +9,6 @@ function copyArrayAndManipulate(
   for (let i = 0; i < array.length; i++) {
     output.push(instructions(array[i]));
   }
-
   return output;
 }
 
