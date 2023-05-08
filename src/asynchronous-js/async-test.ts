@@ -35,7 +35,9 @@ function helloGoodbye() {
 /* CHALLENGE 4 */
 
 function brokenRecord() {
-  // ADD CODE HERE
+  setInterval(() => {
+    console.log("hi again")
+  }, 1000)
 }
 // Uncomment the following line to check your work!
 // brokenRecord(); // should log (every second): hi again
@@ -43,10 +45,14 @@ function brokenRecord() {
 /* CHALLENGE 5 */
 
 function limitedRepeat() {
-  // ADD CODE HERE
+  setTimeout(() => {
+    setInterval(() => {
+      console.log("hi for now");
+    }, 1000)
+  }, 5000)
 }
 // Uncomment the following line to check your work!
-// limitedRepeat(); // should log (every second, for 5 seconds): hi for now
+limitedRepeat(); // should log (every second, for 5 seconds): hi for now
 
 /* CHALLENGE 6 */
 
