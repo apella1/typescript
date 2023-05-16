@@ -6,7 +6,7 @@
  * LHS
  */
     
-function log(a: string | number) {
+function print(a: string | number) {
     console.log(a)
 }
 
