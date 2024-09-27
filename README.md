@@ -1,3 +1,3 @@
-# To Explore
+# JavaScript Playground
 
-- Naming generics
+- This is my playground for learning new JavaScript concepts.
